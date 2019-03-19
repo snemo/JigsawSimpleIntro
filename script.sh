@@ -9,7 +9,7 @@ jar --create --file target/utils.jar -C target/classes/ .
 tree target
 cd ..
 mkdir --parents target/classes
-javac --module-path utils/target/utils.jar:libs/guava-27.1-jre.jar -d target/classes `find src -name "*.java"`
+javac @java-modules-options --module-path utils/target/utils.jar:libs/guava-27.1-jre.jar -d target/classes `find src -name "*.java"`
 jar --create --file target/app.jar --main-class org.company.modularApp.App -C target/classes/ .
 tree target
-java --module-path target/app.jar:utils/target/utils.jar:libs/guava-27.1-jre.jar --module org.company.modularApp
+java @java-modules-options --module-path target/app.jar:utils/target/utils.jar:libs/guava-27.1-jre.jar --module org.company.modularApp
